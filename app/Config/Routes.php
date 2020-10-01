@@ -30,7 +30,14 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Main::index');
+$routes->get('/', 'Pages::index');
+$routes->get('blog/create','Blog::create');
+$routes->get('/csv_data','Csv_file::store');
+$routes->post('/csv_data','Csv_ajax::savefile');
+//$routes->get('/csv_data','Csv_file::store');
+$routes->get('blog/(:any)','Blog::post/$1');
+$routes->get('(:any)', 'Pages::showme/$1');
+
 
 /**
  * --------------------------------------------------------------------
